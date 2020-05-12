@@ -948,19 +948,11 @@ export function searchProfiles(term: string, options: any = {}): ActionFunc {
         }
 
         if (options.not_in_team_id) {
-            if (options.replace) {
-                actions.push({
-                    type: UserTypes.RECEIVED_PROFILES_LIST_NOT_IN_TEAM_AND_REPLACE,
-                    data: profiles,
-                    id: options.team_id,
-                });
-            } else {
-                actions.push({
-                    type: UserTypes.RECEIVED_PROFILES_LIST_NOT_IN_TEAM,
-                    data: profiles,
-                    id: options.not_in_team_id,
-                });
-            }
+            actions.push({
+                type: UserTypes.RECEIVED_PROFILES_LIST_NOT_IN_TEAM,
+                data: profiles,
+                id: options.not_in_team_id,
+            });
         }
 
         dispatch(batchActions(actions));
